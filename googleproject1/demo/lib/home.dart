@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
             const Text(
               'Google',
               style: TextStyle(
-                fontSize: 100,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
-                color: Colors.amber.shade500, 
+                color: Colors.white, 
                 borderRadius: BorderRadius.circular(30),
               ),
               child: const Row(
@@ -46,10 +46,20 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
+            
             // Additional options
-            const Text(
-              'Discover off ',
-              style: TextStyle(color: Colors.black54),
+            const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+            
+              children: [
+                Text('discover-off'),
+                
+                Expanded(child: Icon(Icons.invert_colors_on_sharp),
+                
+                )
+
+              ],
+              
+              
             ),
           ],
         ),
