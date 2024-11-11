@@ -1,59 +1,44 @@
-
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(const MaterialApp(
+    home: MyHomePage(),
+  ));
+}
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
-void main() => runApp(const CheckboxExampleApp());
+  @override
+  // ignore: library_private_types_in_public_api
+  _HomePageState createState() => _HomePageState();
+}
 
-class CheckboxExampleApp extends StatelessWidget {
-  const CheckboxExampleApp({super.key});
+class _HomePageState extends State<MyHomePage> {
+  bool first = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Checkbox Sample')),
-        body: const Center(
-          child: CheckboxExample(),
+        appBar: AppBar(
+          title: const Text('Checkbox'),
         ),
+        body: Row(children: [
+          Row(
+            children: <Widget>[
+              Checkbox(
+                value: first,
+                onChanged: (bool? value) {
+                  setState(() {
+                    first = value!;
+                  });
+                },
+              ),
+            ],
+          )
+        ]),
       ),
-    );
-  }
-}
-
-class CheckboxExample extends StatefulWidget {
-  const CheckboxExample({super.key});
-
-  @override
-  State<CheckboxExample> createState() => _CheckboxExampleState();
-}
-
-class _CheckboxExampleState extends State<CheckboxExample> {
-  bool isChecked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    Color getColor(Set<WidgetState> states) {
-      const Set<WidgetState> interactiveStates = <WidgetState>{
-        WidgetState.pressed,
-        WidgetState.hovered,
-        WidgetState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.red;
-    }
-
-    return Checkbox(
-      checkColor: Colors.white,
-      fillColor: WidgetStateProperty.resolveWith(getColor),
-      value: isChecked,
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
     );
   }
 }
